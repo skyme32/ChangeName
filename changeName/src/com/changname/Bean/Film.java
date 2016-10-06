@@ -1,4 +1,4 @@
-package com.changname.bean;
+package com.changname.Bean;
 
 public class Film {
 

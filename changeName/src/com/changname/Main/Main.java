@@ -4,44 +4,28 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.changname.Bean.Film;
+
 public class Main {
 	
-	private static String[] EXTENSIONS = {"mp4","avi","mpeg","wmv","mov","rm","flv","dvd","mkv"}; 
-
 	public static void main(String[] args) {
-		Main m = new Main();
+		new Controller();
 		
-		
-		
-		
-		//m.createExecution();
 	}
 	
-	/**
-	 * Method where execute all procecess
-	 */
-	public void createExecution() {
-		String current = System.getProperty("user.dir");
-		ArrayList<String> list = readAllFiles(current);
-		HashMap<String, String> listCorrect = changeCorrectNames(list);
-		changeTheCorrectName(listCorrect);
-	}
+	
 
 	/**
 	 * 
 	 * @param list
 	 * @return
 	 */
-	public HashMap<String, String> changeCorrectNames(ArrayList<String> list) {
-		String ext = "";
-		String titleName = "";
-		HashMap<String, String> listCorrect = new HashMap<String,String>();
-		
-		for (String temp : list) {
-			ext = getExtensionFile(temp.toLowerCase());
-			String oldName = temp;
-			titleName = temp.toLowerCase();
-			
+	public HashMap<Film, Film> changeCorrectNames(ArrayList<Film> list) {
+		HashMap<Film, Film> listCorrect = new HashMap<Film, Film>();
+		Film oldFilm = null;
+		Film newFilm = null;
+		/*
+		for (String temp : list) {			
 			// list of splits "["
 			titleName  = getSplitShut(titleName);
 
@@ -79,45 +63,10 @@ public class Main {
 		    listCorrect.put(oldName,titleName+"."+ext);
 		}
 		return listCorrect;
-	}
-	
-	/**
-	 * 
-	 * @param directory is a String
-	 * @return Arraylist on the file names in the current directory.
-	 */
-	public ArrayList<String> readAllFiles(String directory) {
-		ArrayList<String> titles = new ArrayList<String>();
-		File f = new File(directory);
-
-		if (f.exists()) {
-			File[] files = f.listFiles();
-			for (int x = 0; x < files.length; x++) {
-				if (!files[x].isHidden() && files[x].isFile()){
-						titles.add(files[x].getName());
-				}
-			}
-		}
-		return titles;
+		*/
+		return null;
 	}
 
-	/**
-	 * 
-	 * @param filename
-	 * @return
-	 */
-	public String getExtensionFile(String filename) {
-		File f = new File(filename);
-		String extension = "";
-		if (f.isFile()) {
-			int index = filename.lastIndexOf('.');
-			if (index != -1) {
-				extension = filename.substring(index + 1);
-			}
-		} 
-		return extension;
-	}
-	
 	/**
 	 * 
 	 * @param name
