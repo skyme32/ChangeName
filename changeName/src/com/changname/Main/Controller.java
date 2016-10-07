@@ -136,8 +136,6 @@ public class Controller {
 			// list of splits "["
 			titleName = getSplitParameters(titleName);
 
-			System.out.println("MOMO");
-
 			// Delete points and add blank space
 			titleName = getSplitPoint(titleName);
 
@@ -201,7 +199,7 @@ public class Controller {
 		String title = name;
 		String finald = "";
 
-
+		if (title.contains(".")) {
 			int index = title.lastIndexOf('.');
 			if (index != -1) {
 				title = title.substring(0, index);
@@ -209,8 +207,10 @@ public class Controller {
 					finald = finald + " " + point;
 				}
 			}
+			title = finald.substring(1);
+		}
 
-		return finald.substring(1);
+		return title;
 	}
 
 	/**
