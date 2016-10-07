@@ -29,7 +29,7 @@ public class Controller {
 		getExt(read.getExtensions());
 		ArrayList<Film> list = readAll(path);
 		HashMap<Film, Film> listCorrect = changeCorrectNames(list);
-		changeTheCorrectName(listCorrect);
+		changeTheCorrectName(listCorrect,path);
 	}
 
 	/**
@@ -70,10 +70,10 @@ public class Controller {
 	 * 
 	 * @param mapList
 	 */
-	public void changeTheCorrectName(HashMap<Film, Film> mapList) {
+	public void changeTheCorrectName(HashMap<Film, Film> mapList,String path) {
 		for (Film key : mapList.keySet()) {		
-			File f1 = new File(key.getTitle()+"."+key.getExtension());
-			File f2 = new File(mapList.get(key).getTitle()+"."+mapList.get(key).getExtension());
+			File f1 = new File(path+"/"+key.getTitle()+"."+key.getExtension());
+			File f2 = new File(path+"/"+mapList.get(key).getTitle()+"."+mapList.get(key).getExtension());
 			
 			if (f1.renameTo(f2)) {
 				System.out.println(f1+" = SUCCESS with --> "+f2);
